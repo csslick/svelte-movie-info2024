@@ -1,8 +1,4 @@
 <script>
-  import logo1 from './assets/svelte.svg';
-  let logo2 = '/vite.svg';
-  let textRed = "color: red;"
-
   const data = [
     {
       title: "파묘",
@@ -21,22 +17,23 @@
     },
   ];
 
-  const foods = ['pizza', 'burger', 'sushi', 'pasta'];
+  let likeCount = 0; // 좋아요 수를 저장할 변수
+
+  const handleLike = () => {
+    likeCount += 1;
+    console.log(likeCount)
+  }
 </script>
 
 <main>
-  {#each foods as food, i}
-    <p>{i}: {food}</p>
-  {/each}
   <h1>영화정보</h1>
-  <img src={logo1} alt="">
-  <img src={logo2} alt="">
   {#each data as movie, i}
     <div>
-      <h3 class="bg-yellow" style={textRed}>{movie.title}</h3>
+      <h3 class="bg-yellow">{movie.title}</h3>
       <h3>{movie.title}</h3>
       <p>개봉: {movie.year}</p>
       <p>장르: {movie.category}</p>
+      <button on:click={handleLike}>좋아요 {likeCount}</button>
     </div>
   {/each}
 </main>
@@ -45,5 +42,6 @@
   .bg-yellow {
     background: gold;
     padding: 10px;
+    color: #333;
   }
 </style>
