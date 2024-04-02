@@ -4,24 +4,27 @@
       title: "파묘",
       year: 2024,
       category: "미스터리, 공포",
+      likeCount: 0,
     },
     {
       title: "고질라 X 콩: 뉴 엠파이어",
       year: 2024,
       category: "어드벤처, 액션, SF",
+      likeCount: 0,
     },
     {
       title: "듄: 파트2",
       year: 2024,
       category: "액션",
+      likeCount: 0,
     },
   ];
 
   let likeCount = 0; // 좋아요 수를 저장할 변수
 
-  const handleLike = () => {
-    likeCount += 1;
-    console.log(likeCount)
+  const handleLike = (i) => {
+    data[i].likeCount += 1;
+    console.log(likeCount, i);
   }
 </script>
 
@@ -33,7 +36,9 @@
       <h3>{movie.title}</h3>
       <p>개봉: {movie.year}</p>
       <p>장르: {movie.category}</p>
-      <button on:click={handleLike}>좋아요 {likeCount}</button>
+      <button 
+        on:click={()=>{ handleLike(i)}}
+      >좋아요 {data[i].likeCount}</button>
     </div>
   {/each}
 </main>
