@@ -8,6 +8,7 @@
   };
 
   let isModal = false; // 모달창 변수 추가
+  let selectedMovie = 0; // 선택한 영화의 인덱스 변수 추가
 </script>
 
 <main class="container">
@@ -29,6 +30,8 @@
         <button 
           on:click={()=> {
             isModal = true;
+            selectedMovie = i;
+            console.log('Selected movie:', data[i]);
           }}
           class="btn btn-primary"
         >상세보기</button>
@@ -40,7 +43,8 @@
 {#if isModal}
   <div class="modal">
     <div class="inner">
-      <h3>영화 상세정보</h3>
+      <h3>{data[selectedMovie].title}</h3>
+      <p>{@html data[selectedMovie].story}</p>
       <button 
         on:click={()=>isModal=false}
         class="btn-close"
