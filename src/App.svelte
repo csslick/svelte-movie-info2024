@@ -1,5 +1,7 @@
 <script>
   import data from './lib/movies';
+  import Navbar from './lib/components/Navbar.svelte';
+  import Modal from './lib/components/Modal.svelte';
   
   let likeCount = 0; // 좋아요 수를 저장할 변수
   const handleLike = (i) => {
@@ -11,6 +13,7 @@
   let selectedMovie = 0; // 선택한 영화의 인덱스 변수 추가
 </script>
 
+<Navbar />
 <main class="container">
   <h1>영화정보</h1>
   {#each data as movie, i}
@@ -41,16 +44,7 @@
 </main>
 
 {#if isModal}
-  <div class="modal">
-    <div class="inner">
-      <h3>{data[selectedMovie].title}</h3>
-      <p>{@html data[selectedMovie].story}</p>
-      <button 
-        on:click={()=>isModal=false}
-        class="btn-close"
-      >닫기</button>
-    </div>
-  </div>
+  <Modal />
 {/if}
 
 <style>
