@@ -44,7 +44,7 @@
 </main>
 
 {#if isModal}
-  <Modal />
+  <Modal data={data} selectedMovie={selectedMovie} />
 {/if}
 
 <style>
@@ -73,24 +73,5 @@
 
   .item .info {
     width: 100%;
-  }
-
-  .modal {
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal .inner {
-    background: #fff;
-    width: 80%;
-    padding: 20px;
-    border-radius: 10px;
   }
 </style>
