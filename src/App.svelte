@@ -11,6 +11,10 @@
 
   let isModal = false; // 모달창 변수 추가
   let selectedMovie = 0; // 선택한 영화의 인덱스 변수 추가
+
+  const closeModal = () => {
+    isModal = false;
+  }
 </script>
 
 <Navbar />
@@ -44,7 +48,7 @@
 </main>
 
 {#if isModal}
-  <Modal data={data} selectedMovie={selectedMovie} />
+  <Modal {data} {selectedMovie} {closeModal} />
 {/if}
 
 <style>

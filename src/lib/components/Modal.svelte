@@ -1,6 +1,7 @@
 <script>
   export let data; // 영화 데이터 받는다(props 변수 선언)
   export let selectedMovie; // 선택한 영화의 번호 받는다(props 변수 선언)
+  export let closeModal; // 함수 전달받음
 </script>
 
 <div class="modal">
@@ -8,7 +9,7 @@
     <h3>{data[selectedMovie].title}</h3>
     <p>{@html data[selectedMovie].story}</p>
     <button 
-      on:click={()=>isModal=false}
+      on:click={closeModal}
       class="btn-close"
     >닫기</button>
   </div>
