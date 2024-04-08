@@ -1,8 +1,9 @@
 <script>
   export let data = [];
   export let isModal = false;
-  export let selectedMovie = 0;
+  // export let selectedMovie = 0;
   export let handleLike;
+  export let handleMovieNumber;
 </script>
 
 <main class="container">
@@ -24,7 +25,7 @@
         <button
           on:click={() => {
             isModal = true;
-            selectedMovie = i;
+            handleMovieNumber(i);
             console.log("Selected movie:", data[i]);
           }}
           class="btn btn-primary">상세보기</button
