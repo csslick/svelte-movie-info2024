@@ -1,7 +1,7 @@
 <script>
-    import { fly, fade } from 'svelte/transition';
+  import { fly, fade } from 'svelte/transition';
 
-    export let isEvent;
+  export let isEvent;
 </script>
 
 <div 

@@ -25,7 +25,7 @@
 
   let isEvent = true; // 이벤트창 표시 여부
 </script>
-
+ 
 <Navbar />
 
 <!-- <div class={isEvent ? 'event show' : 'event'}> -->
