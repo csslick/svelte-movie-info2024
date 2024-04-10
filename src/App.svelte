@@ -33,7 +33,7 @@
   <Event bind:isEvent />
 {/if}
 
-<SearchBar />
+<SearchBar {data} />
 
 <Movies {data} bind:isModal {handleMovieNumber} {handleLike} />
 
