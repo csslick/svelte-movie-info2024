@@ -6,6 +6,9 @@
   import Event from "./lib/components/Event.svelte";
   import SearchBar from "./lib/components/SearchBar.svelte";
 
+  // data 사본 추가
+  let data_temp = [...data]; // 복사본
+
   let likeCount = 0; // 좋아요 수를 저장할 변수
   const handleLike = (i) => {
     data[i].likeCount += 1;
@@ -33,9 +36,9 @@
   <Event bind:isEvent />
 {/if}
 
-<SearchBar {data} />
+<SearchBar {data} bind:data_temp />
 
-<Movies {data} bind:isModal {handleMovieNumber} {handleLike} />
+<Movies {data_temp} bind:isModal {handleMovieNumber} {handleLike} />
 
 {#if isModal}
   <Modal {data} {selectedMovie} {closeModal} />

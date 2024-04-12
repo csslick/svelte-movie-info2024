@@ -4,11 +4,12 @@
   // export let selectedMovie = 0;
   export let handleLike;
   export let handleMovieNumber;
+  export let data_temp;
 </script>
 
 <main class="container">
   <h1>영화정보</h1>
-  {#each data as movie, i}
+  {#each data_temp as movie, i}
     <div class="item">
       <figure>
         <img src={movie.imgUrl} alt={movie.title} />
@@ -20,7 +21,7 @@
         <button
           on:click={() => {
             handleLike(i);
-          }}>좋아요 {data[i].likeCount}</button
+          }}>좋아요 {data_temp[i].likeCount}</button
         >
         <button
           on:click={() => {

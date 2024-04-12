@@ -2,6 +2,7 @@
   let inputText = "";
   let alertText = "";
   export let data = [];
+  export let data_temp = [];
 
   $: if(inputText.length > 16) {
     alertText = "입력한도 초과";
@@ -11,18 +12,18 @@
 
   // 입력한 영화제목이 데이터에 있는지 확인
   const searchMovie = () => {
-    let findMovie = data.filter(movie => {
+    data_temp = data.filter(movie => {
       return movie.title.includes(inputText);
     })
-    console.log(findMovie);
+  
     // 자료가 없으면 경고메시지 출력
-    if(findMovie.length === 0) {
+    if(data_temp.length === 0) {
       alertText = "검색 결과가 없습니다";
     } else {
       alertText = '';
     }
   }
-
+ 
 </script>
 
 <div class="search-box">
