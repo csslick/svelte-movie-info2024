@@ -12,7 +12,7 @@
   // 입력한 영화제목이 데이터에 있는지 확인
   const searchMovie = () => {
     let findMovie = data.filter(movie => {
-      return movie.title == inputText
+      return movie.title.includes(inputText);
     })
     console.log(findMovie);
     // 자료가 없으면 경고메시지 출력
