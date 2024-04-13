@@ -26,6 +26,8 @@
     selectedMovie = i;
   };
 
+  let alertText = "";
+
   let isEvent = true; // 이벤트창 표시 여부
 </script>
  
@@ -36,7 +38,15 @@
   <Event bind:isEvent />
 {/if}
 
-<SearchBar {data} bind:data_temp />
+<SearchBar {data} bind:data_temp bind:alertText />
+
+<!-- 전체보기 버튼 추가 -->
+<div class="container">
+  <button on:click={() => {
+    data_temp = [...data]; // 데이터 복사본으로 초기화
+    alertText = ""; // 검색 결과 초기화
+  }}>전체보기</button>
+</div>
 
 <Movies {data_temp} bind:isModal {handleMovieNumber} {handleLike} />
 
@@ -44,3 +54,8 @@
   <Modal {data} {selectedMovie} {closeModal} />
 {/if}
 
+<style>
+  .container {
+    text-align: center;
+  }
+</style>

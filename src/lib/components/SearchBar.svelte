@@ -1,6 +1,6 @@
 <script>
   let inputText = "";
-  let alertText = "";
+  export let alertText = "";
   export let data = [];
   export let data_temp = [];
 
