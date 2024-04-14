@@ -8,11 +8,22 @@
 
   // data 사본 추가
   let data_temp = [...data]; // 복사본
-
   let likeCount = 0; // 좋아요 수를 저장할 변수
-  const handleLike = (i) => {
-    data[i].likeCount += 1;
-    console.log(likeCount, i);
+
+  const handleLike = (id) => {
+    // data[i].likeCount += 1;
+    // console.log(likeCount, i);
+    // 원본 data에서 id에 해당하는 like를 1 증가
+    data.map(movie => {
+      if (movie.id === id) {
+        movie.likeCount += 1;
+      }
+    });
+    // data_temp = [...data]; // 데이터 복사본으로 초기화
+    // data_temp 있는 내용만 필터링해서 복사
+    data_temp = data.filter(movie => {
+      return data_temp.includes(movie);
+    })
   };
 
   let isModal = false; // 모달창 변수 추가
