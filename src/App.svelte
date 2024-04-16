@@ -5,7 +5,7 @@
   import Movies from "./lib/components/Movies.svelte";
   import Event from "./lib/components/Event.svelte";
   import SearchBar from "./lib/components/SearchBar.svelte";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
 
   // 이벤트 텍스트
   const eventText = [
@@ -51,14 +51,21 @@
   let alertText = "";
   let isEvent = true; // 이벤트창 표시 여부
   let eventIndex = 0; // 이벤트 텍스트 인덱스
+  let intervalEventText; // 이벤트 텍스트 인터벌 변수
 
-  onMount(() => {
+  $: {
+    // 이벤트 인터벌 제거
+    clearInterval(intervalEventText);
+
     // 일정 시간 경과 후 eventIndex를 1증가
-    setTimeout(() => {
+    intervalEventText = setInterval(() => {
       eventIndex += 1;
+      if (eventIndex >= eventText.length) {
+        eventIndex = 0;
+      }
     }, 3000);
-  });
-
+  }
+ 
 </script>
  
 <Navbar />
