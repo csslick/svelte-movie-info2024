@@ -5,6 +5,14 @@
   import Movies from "./lib/components/Movies.svelte";
   import Event from "./lib/components/Event.svelte";
   import SearchBar from "./lib/components/SearchBar.svelte";
+  import { onMount } from "svelte";
+
+  // 이벤트 텍스트
+  const eventText = [
+    "영화 정보 업데이트",
+    "신규 영화 추가",
+    "이벤트 진행중"
+  ]
 
   // data 사본 추가
   let data_temp = [...data]; // 복사본
@@ -23,6 +31,9 @@
     // data_temp 있는 내용만 필터링해서 복사
     data_temp = data.filter(movie => {
       return data_temp.includes(movie);
+      // if(data_temp.includes(movie)) {
+      //   return movie;
+      // }
     })
   };
 
@@ -38,15 +49,23 @@
   };
 
   let alertText = "";
-
   let isEvent = true; // 이벤트창 표시 여부
+  let eventIndex = 0; // 이벤트 텍스트 인덱스
+
+  onMount(() => {
+    // 일정 시간 경과 후 eventIndex를 1증가
+    setTimeout(() => {
+      eventIndex += 1;
+    }, 3000);
+  });
+
 </script>
  
 <Navbar />
 
 <!-- <div class={isEvent ? 'event show' : 'event'}> -->
 {#if isEvent}  
-  <Event bind:isEvent />
+  <Event bind:isEvent {eventText} {eventIndex} />
 {/if}
 
 <SearchBar {data} bind:data_temp bind:alertText />
